@@ -11,11 +11,11 @@ def show_profile():
     st.markdown("<h3 style='text-align: center;'>Lokasi Peternakan</h3>", unsafe_allow_html=True)
 
     # Map center location
-    m = folium.Map(location=[-6.200000, 106.816666], zoom_start=10)
+    m = folium.Map(location=[-7.2632127798446895, 110.23181505397224], zoom_start=20)
 
     # Add marker
     folium.Marker(
-        [-6.175110, 106.865036],
+        [-7.263212114673077, 110.23181237176333],
         popup="Peternakan Jangkrik KricketFlow",
         tooltip="Peternakan Jangkrik KricketFlow"
     ).add_to(m)
