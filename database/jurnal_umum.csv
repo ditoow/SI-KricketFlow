@@ -1,0 +1,40 @@
+Tanggal,Keterangan,Debet,Kredit
+3/1/2025,Pembelian,3000000,
+,Kas,,3000000
+3/1/2025,Perlengkapan,600000,
+,Kas,,1600000
+3/3/2025,Pembelian,5000000,
+,Kas,,5000000
+3/5/2025,Beban Sewa,400000,
+,Kas,,400000
+3/7/2025,Kas,24500000,
+,Penjualan,,24500000
+3/7/2025,Beban pengiriman,675000,
+,Kas,,675000
+3/12/2025,Utang Bank,625000,
+,Beban bunga,12500,
+,Kas,,637500
+3/13/2025,Perlengkapan,5600000,
+,Kas,,5600000
+3/14/2025,Kas,24500000,
+,Penjualan,,24500000
+3/14/2025,Beban pengiriman,675000,
+,Kas,,675000
+3/17/2025,Perlengkapan,1400000,
+,Kas,,1400000
+3/21/2025,Kas,24500000,
+,Penjualan,,24500000
+,Beban pengiriman,675000,
+,Kas,,675000
+3/25/2025,Perlengkapan,5600000,
+,Kas,,5600000
+3/26/2025,Pembelian,2500000,
+,Kas,,2500000
+3/28/2025,Kas,24500000,
+,Penjualan,,24500000
+,Beban pengiriman,675000,
+,Kas,,675000
+3/29/2025,Beban Pemeliharaan,110000,
+,Kas,,110000
+3/31/2025,Beban Gaji,9000000,
+,Kas,,9000000
