@@ -4,28 +4,26 @@ import folium
 from streamlit_folium import folium_static
 
 def show_profile():
-    """
-    Display the profile page with heading, maps, and description
-    """
+
     st.markdown("<h1 style='text-align: center;'>Profil Peternakan Jangkrik</h1>", unsafe_allow_html=True)
     st.markdown("<h3 style='text-align: center;'>Lokasi Peternakan</h3>", unsafe_allow_html=True)
 
-    # Map center location
+    
     m = folium.Map(location=[-7.2632127798446895, 110.23181505397224], zoom_start=20)
 
-    # Add marker
+    
     folium.Marker(
         [-7.263212114673077, 110.23181237176333],
         popup="Peternakan Jangkrik KricketFlow",
         tooltip="Peternakan Jangkrik KricketFlow"
     ).add_to(m)
 
-    # Center the map using columns
+    
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
         folium_static(m)
 
-    # Centered description section
+    
     st.markdown("<h3 style='text-align: center;'>Tentang Kami</h3>", unsafe_allow_html=True)
 
     st.markdown("""

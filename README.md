@@ -53,6 +53,11 @@ Sistem Informasi KricketFlow adalah aplikasi berbasis web untuk mengelola data p
    pip install -r requirements.txt
    ```
 
+Summary : 
+python -m venv venv
+venv\Scripts\activate
+pip install -r requirements.txt
+
 ### 5. Setup Database
 
 1. Jalankan script setup database untuk membuat struktur direktori yang dibutuhkan:
