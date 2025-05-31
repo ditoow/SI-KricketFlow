@@ -38,30 +38,6 @@ def save_jurnal_umum_data(df):
     df.to_csv(csv_path, index=False)
 
 
-def add_jurnal_data(tanggal, keterangan, debet, kredit):
-    df = load_jurnal_umum_data()
-    new_row = pd.DataFrame({'Tanggal': [tanggal], 'Keterangan': [keterangan], 'Debet': [debet], 'Kredit': [kredit]})
-    df = pd.concat([df, new_row], ignore_index=True)
-    save_jurnal_umum_data(df)
-    return df
-
-
-def edit_jurnal_data(index, tanggal, keterangan, debet, kredit):
-    df = load_jurnal_umum_data()
-    df.loc[index, 'Tanggal'] = tanggal
-    df.loc[index, 'Keterangan'] = keterangan
-    df.loc[index, 'Debet'] = debet
-    df.loc[index, 'Kredit'] = kredit
-    save_jurnal_umum_data(df)
-    return df
-
-
-def delete_jurnal_data(index):
-    df = load_jurnal_umum_data()
-    df = df.drop(index)
-    df = df.reset_index(drop=True)
-    save_jurnal_umum_data(df)
-    return df
 
 def show_jurnal_umum():
 
@@ -122,24 +98,6 @@ def show_jurnal_umum():
                 
             
             st.markdown("---")
-            
-            
-            col1, col2, col3 = st.columns(3)
-            with col1:
-                if st.button('➕ Tambah Data', key="jurnal_add_btn"):
-                    st.session_state.jurnal_show_add_form = not st.session_state.jurnal_show_add_form
-                    st.session_state.jurnal_show_edit_form = False
-                    st.session_state.jurnal_show_delete_form = False
-            with col2:
-                if st.button('✏️ Edit Data', key="jurnal_edit_btn"):
-                    st.session_state.jurnal_show_edit_form = not st.session_state.jurnal_show_edit_form
-                    st.session_state.jurnal_show_add_form = False
-                    st.session_state.jurnal_show_delete_form = False
-            with col3:
-                if st.button('🗑️ Hapus Data', key="jurnal_delete_btn"):
-                    st.session_state.jurnal_show_delete_form = not st.session_state.jurnal_show_delete_form
-                    st.session_state.jurnal_show_add_form = False
-                    st.session_state.jurnal_show_edit_form = False
         else:
             
             st.warning("Data jurnal umum tidak tersedia. Silakan gunakan tombol 'Tambah Data' untuk menambahkan data baru.")
@@ -147,37 +105,12 @@ def show_jurnal_umum():
             
             
             st.markdown("---")
-            col1, col2, col3 = st.columns(3)
-            with col1:
-                if st.button('➕ Tambah Data', key="jurnal_add_btn_empty"):
-                    st.session_state.jurnal_show_add_form = not st.session_state.jurnal_show_add_form
-                    st.session_state.jurnal_show_edit_form = False
-                    st.session_state.jurnal_show_delete_form = False
-            with col2:
-                if st.button('✏️ Edit Data', key="jurnal_edit_btn_empty", disabled=True):
-                    pass
-            with col3:
-                if st.button('🗑️ Hapus Data', key="jurnal_delete_btn_empty", disabled=True):
-                    pass
     except Exception as e:
         st.error(f"Terjadi kesalahan: {e}")
         st.info("Pastikan format file CSV sesuai (Tanggal, Keterangan, Debet, Kredit)")
         
         
         st.markdown("---")
-        st.subheader("Menu Aksi")
-        col1, col2, col3 = st.columns(3)
-        with col1:
-            if st.button('➕ Tambah Data', key="jurnal_add_btn_error"):
-                st.session_state.jurnal_show_add_form = not st.session_state.jurnal_show_add_form
-                st.session_state.jurnal_show_edit_form = False
-                st.session_state.jurnal_show_delete_form = False
-        with col2:
-            if st.button('✏️ Edit Data', key="jurnal_edit_btn_error", disabled=True):
-                pass
-        with col3:
-            if st.button('🗑️ Hapus Data', key="jurnal_delete_btn_error", disabled=True):
-                pass
     
     
     if st.session_state.jurnal_show_add_form:

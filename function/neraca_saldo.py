@@ -53,29 +53,6 @@ def save_neraca_saldo_data(df):
     df.to_csv(csv_path, index=False)
 
 
-def add_data(nama_akun, debet, kredit):
-    df = load_neraca_saldo_data()
-    new_row = pd.DataFrame({'Nama Akun': [nama_akun], 'Debet': [debet], 'Kredit': [kredit]})
-    df = pd.concat([df, new_row], ignore_index=True)
-    save_neraca_saldo_data(df)
-    return df
-
-
-def edit_data(index, nama_akun, debet, kredit):
-    df = load_neraca_saldo_data()
-    df.loc[index, 'Nama Akun'] = nama_akun
-    df.loc[index, 'Debet'] = debet
-    df.loc[index, 'Kredit'] = kredit
-    save_neraca_saldo_data(df)
-    return df
-
-
-def delete_data(index):
-    df = load_neraca_saldo_data()
-    df = df.drop(index)
-    df = df.reset_index(drop=True)
-    save_neraca_saldo_data(df)
-    return df
 
 def show_neraca_saldo():
 
@@ -131,24 +108,6 @@ def show_neraca_saldo():
                 
             
             st.markdown("---")
-            
-            
-            col1, col2, col3 = st.columns(3)
-            with col1:
-                if st.button('➕ Tambah Data', key="ns_add_btn"):
-                    st.session_state.ns_show_add_form = not st.session_state.ns_show_add_form
-                    st.session_state.ns_show_edit_form = False
-                    st.session_state.ns_show_delete_form = False
-            with col2:
-                if st.button('✏️ Edit Data', key="ns_edit_btn"):
-                    st.session_state.ns_show_edit_form = not st.session_state.ns_show_edit_form
-                    st.session_state.ns_show_add_form = False
-                    st.session_state.ns_show_delete_form = False
-            with col3:
-                if st.button('🗑️ Hapus Data', key="ns_delete_btn"):
-                    st.session_state.ns_show_delete_form = not st.session_state.ns_show_delete_form
-                    st.session_state.ns_show_add_form = False
-                    st.session_state.ns_show_edit_form = False
         else:
             
             st.warning("Data neraca saldo tidak tersedia. Silakan gunakan tombol 'Tambah Data' untuk menambahkan data baru.")
@@ -156,37 +115,12 @@ def show_neraca_saldo():
             
             
             st.markdown("---")
-            col1, col2, col3 = st.columns(3)
-            with col1:
-                if st.button('➕ Tambah Data', key="ns_add_btn_empty"):
-                    st.session_state.ns_show_add_form = not st.session_state.ns_show_add_form
-                    st.session_state.ns_show_edit_form = False
-                    st.session_state.ns_show_delete_form = False
-            with col2:
-                if st.button('✏️ Edit Data', key="ns_edit_btn_empty", disabled=True):
-                    pass
-            with col3:
-                if st.button('🗑️ Hapus Data', key="ns_delete_btn_empty", disabled=True):
-                    pass
     except Exception as e:
         st.error(f"Terjadi kesalahan: {e}")
         st.info("Pastikan format file CSV sesuai (Nama Akun, Debet, Kredit)")
         
         
         st.markdown("---")
-        st.subheader("Menu Aksi")
-        col1, col2, col3 = st.columns(3)
-        with col1:
-            if st.button('➕ Tambah Data', key="ns_add_btn_error"):
-                st.session_state.ns_show_add_form = not st.session_state.ns_show_add_form
-                st.session_state.ns_show_edit_form = False
-                st.session_state.ns_show_delete_form = False
-        with col2:
-            if st.button('✏️ Edit Data', key="ns_edit_btn_error", disabled=True):
-                pass
-        with col3:
-            if st.button('🗑️ Hapus Data', key="ns_delete_btn_error", disabled=True):
-                pass
     
     
     if st.session_state.ns_show_add_form:

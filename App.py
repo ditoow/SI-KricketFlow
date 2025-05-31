@@ -33,6 +33,7 @@ try:
     from function.dashboard import show_dashboard
     from function.profile import show_profile
     from function.auth import show_login, is_logged_in, logout
+    from function.tambah import show_tambah_transaksi
     
 except ImportError:
     
@@ -51,6 +52,7 @@ except ImportError:
     show_login = None
     is_logged_in = None
     logout = None
+    show_tambah_transaksi = None
 
 
 def ensure_dir(directory):
@@ -66,8 +68,8 @@ def show_home():
 
     with st.sidebar:
         selected = option_menu("🦗KricketFlow",
-                              ["Dashboard", "Profil", "Keuangan"],
-                              icons=["house", "person", "cash-coin"],
+                              ["Dashboard", "Profil", "Keuangan", "Tambah Transaksi"],
+                              icons=["house", "person", "cash-coin", "plus-circle"],
                               default_index=0)
         
         
@@ -91,6 +93,14 @@ def show_content(selected):
             show_profile()
         else:
             show_profile_fallback()
+    
+    elif selected == "Tambah Transaksi":
+        
+        if show_tambah_transaksi:
+            show_tambah_transaksi()
+        else:
+            st.title("Tambah Transaksi")
+            st.error("Modul Tambah Transaksi tidak ditemukan. Silakan restart aplikasi setelah file dibuat.")
         
     elif selected == "Keuangan":
         st.title("Keuangan")

@@ -77,41 +77,6 @@ def save_buku_besar_data(df, akun):
     
     df.to_csv(csv_path, index=False)
 
-def add_data(akun, tanggal_debet, debet, tanggal_kredit, kredit):
-    df = load_buku_besar_data(akun)
-    
-    
-    tanggal_kredit_col = 'Tanggal.1' if 'Tanggal.1' in df.columns else 'Tanggal'
-    
-    new_row = pd.DataFrame({
-        'Tanggal': [tanggal_debet], 
-        'Debet': [debet], 
-        tanggal_kredit_col: [tanggal_kredit], 
-        'Kredit': [kredit]
-    })
-    df = pd.concat([df, new_row], ignore_index=True)
-    save_buku_besar_data(df, akun)
-    return df
-
-def edit_data(akun, index, tanggal_debet, debet, tanggal_kredit, kredit):
-    df = load_buku_besar_data(akun)
-    
-    
-    tanggal_kredit_col = 'Tanggal.1' if 'Tanggal.1' in df.columns else 'Tanggal'
-    
-    df.loc[index, 'Tanggal'] = tanggal_debet
-    df.loc[index, 'Debet'] = debet
-    df.loc[index, tanggal_kredit_col] = tanggal_kredit
-    df.loc[index, 'Kredit'] = kredit
-    save_buku_besar_data(df, akun)
-    return df
-
-def delete_data(akun, index):
-    df = load_buku_besar_data(akun)
-    df = df.drop(index)
-    df = df.reset_index(drop=True)
-    save_buku_besar_data(df, akun)
-    return df
 
 def get_bukubesar_accounts_ordered():
 
@@ -305,24 +270,6 @@ def show_buku_besar():
                 
             
             st.markdown("---")
-            
-            
-            col1, col2, col3 = st.columns(3)
-            with col1:
-                if st.button('➕ Tambah Data', key=f'add_bukbes_{selected_account}'):
-                    st.session_state.show_add_form_bukbes = not st.session_state.show_add_form_bukbes
-                    st.session_state.show_edit_form_bukbes = False
-                    st.session_state.show_delete_form_bukbes = False
-            with col2:
-                if st.button('✏️ Edit Data', key=f'edit_bukbes_{selected_account}'):
-                    st.session_state.show_edit_form_bukbes = not st.session_state.show_edit_form_bukbes
-                    st.session_state.show_add_form_bukbes = False
-                    st.session_state.show_delete_form_bukbes = False
-            with col3:
-                if st.button('🗑️ Hapus Data', key=f'delete_bukbes_{selected_account}'):
-                    st.session_state.show_delete_form_bukbes = not st.session_state.show_delete_form_bukbes
-                    st.session_state.show_add_form_bukbes = False
-                    st.session_state.show_edit_form_bukbes = False
         else:
             
             st.warning(f"Data buku besar untuk akun {selected_display} tidak tersedia atau kosong.")
@@ -330,37 +277,12 @@ def show_buku_besar():
             
             
             st.markdown("---")
-            col1, col2, col3 = st.columns(3)
-            with col1:
-                if st.button('➕ Tambah Data', key=f'add_bukbes_empty_{selected_account}'):
-                    st.session_state.show_add_form_bukbes = not st.session_state.show_add_form_bukbes
-                    st.session_state.show_edit_form_bukbes = False
-                    st.session_state.show_delete_form_bukbes = False
-            with col2:
-                if st.button('✏️ Edit Data', key=f'edit_bukbes_empty_{selected_account}', disabled=True):
-                    pass
-            with col3:
-                if st.button('🗑️ Hapus Data', key=f'delete_bukbes_empty_{selected_account}', disabled=True):
-                    pass
     except Exception as e:
         st.error(f"Terjadi kesalahan: {e}")
         st.info(f"Pastikan format file CSV sesuai (Tanggal, Debet, Tanggal, Kredit)")
         
         
         st.markdown("---")
-        st.subheader("Menu Aksi")
-        col1, col2, col3 = st.columns(3)
-        with col1:
-            if st.button('➕ Tambah Data', key=f'add_bukbes_error_{selected_account}'):
-                st.session_state.show_add_form_bukbes = not st.session_state.show_add_form_bukbes
-                st.session_state.show_edit_form_bukbes = False
-                st.session_state.show_delete_form_bukbes = False
-        with col2:
-            if st.button('✏️ Edit Data', key=f'edit_bukbes_error_{selected_account}', disabled=True):
-                pass
-        with col3:
-            if st.button('🗑️ Hapus Data', key=f'delete_bukbes_error_{selected_account}', disabled=True):
-                pass
     
     
     if st.session_state.show_add_form_bukbes:
