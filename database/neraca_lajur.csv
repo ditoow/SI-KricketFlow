@@ -1,13 +1,14 @@
 Nama Akun,Neraca Saldo Debet,Neraca Saldo Kredit,Laba Rugi Debet,Laba Rugi Kredit,Neraca Debet,Neraca Kredit
-Kas,139152500,,, ,139152500,
-Perlengkapan,25700000,,, ,25700000,
-Peralatan,4800000,,, ,4800000,
-Utang bank,,14375000,,, ,14375000
-Modal,,80000000,,, ,80000000
-Penjualan,,98000000,,98000000,,
-Pembelian,10500000,,10500000,,,
-Beban gaji,9000000,,9000000,,,
-Beban pengiriman,2700000,,2700000,,,
-Beban pemeliharaan,110000,,110000,,,
-Beban sewa,400000,,400000,,,
-Beban bunga,12500,,12500,,,
+Kas,139242500.0,,, ,139242500.0,
+Perlengkapan,25700000.0,,, ,25700000,
+Peralatan,4800000.0,,, ,4800000,
+Utang bank,,14375000.0,,, ,14375000.0
+Modal,,80000000.0,,, ,80000000.0
+Penjualan,,98000000.0,,98000000,,
+Pembelian,10500000.0,,10500000.0,,,
+Beban gaji,9000000.0,,9000000.0,,,
+Beban pengiriman,2700000.0,,2700000.0,,,
+Beban pemeliharaan,110000.0,,110000.0,,,
+Beban sewa,400000.0,,400000.0,,,
+Beban bunga,12500.0,,12500.0,,,
+Utang Bank,0.0,276000.0,0.0,0,0,276000.0
